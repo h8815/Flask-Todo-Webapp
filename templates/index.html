@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block mainbody %}
+<div class="container">
+  <div class="form-section">
+    <h2 class="mb-4 text-primary">Add a Todo</h2>
+    <form action="/" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Todo Title</label>
+        <input type="text" class="form-control" name="title" id="title">
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Todo Description</label>
+        <input type="text" class="form-control" name="desc" id="desc">
+      </div>
+      <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+<div class="container">
+  <div class="todo-section">
+    <h2 class="mb-3 text-success">Your Todo List</h2>
+
+    {% if allTodo|length == 0 %}
+    <div class="alert alert-dark" role="alert">
+      No Todos to show! Use the above form to add a todo.
+    </div>
+    {% else %}
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-3">
+      {% for todo in allTodo %}
+      <div class="col">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ todo.title }}</h5>
+            <p class="card-text">{{ todo.desc }}</p>
+            <p class="text-muted small">{{ todo.date_created.strftime('%b %d, %Y %I:%M %p') }}</p>
+            <a href="/update/{{todo.sno}}" class="btn btn-outline-success btn-sm">Edit</a>
+            <a href="/delete/{{todo.sno}}" class="btn btn-outline-danger btn-sm">Delete</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+body {
+    background: #f1f3f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  .navbar {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand,
+  .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+  }
+  
+  .navbar-brand:hover {
+    animation: pulse 1s infinite;
+  }
+  
+  .nav-link:hover {
+    color: #ffc107 !important;
+    transition: 0.3s;
+  }
+  
+  .nav-link.active {
+    color: #ffc107 !important;
+  }
+  
+  .form-section,
+  .todo-section {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+    animation: slideInUp 0.7s ease-out;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+  }
+  
+  .alert {
+    margin-top: 1rem;
+    border-left: 5px solid #0d6efd;
+    animation: fadeIn 1s ease-in;
+  }
+  
+  .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    animation: glow 0.4s ease-in-out;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 12px rgba(13, 110, 253, 0.6);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
