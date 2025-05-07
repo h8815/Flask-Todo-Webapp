@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for, flash
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -78,12 +78,10 @@ def register():
         username = request.form['username']
         password = generate_password_hash(request.form['password'])
         if User.query.filter_by(username=username).first():
-            flash('Username already exists', 'danger')
             return redirect('/register')
         user = User(username=username, password=password)
         db.session.add(user)
         db.session.commit()
-        flash('Registration successful! Please login.', 'success')
         return redirect('/login')
     return render_template('register.html')
 
@@ -96,7 +94,6 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user)
             return redirect('/')
-        flash('Invalid username or password', 'danger')
     return render_template('login.html')
 
 @app.route('/logout')
@@ -108,4 +105,4 @@ def logout():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(host='0.0.0.0', port=81)
+    app.run(port=5000,debug=True)
